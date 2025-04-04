@@ -1,12 +1,11 @@
 from fastapi import FastAPI
-from routers import estudiantes, asignaturas
+from database import Base, engine
+from routers import estudiantes
 
-app = FastAPI(
-    title="API Estudiantes - Servidor 1",
-    description="Maneja estudiantes y asignaturas con SQLite",
-    version="1.0.0"
-)
+app = FastAPI()
 
-# Incluir las rutas
-app.include_router(estudiantes.router, prefix="/api", tags=["Estudiantes"])
-app.include_router(asignaturas.router, prefix="/api", tags=["Asignaturas"])
+# Crear tablas
+Base.metadata.create_all(bind=engine)
+
+# Incluir el router de estudiantes
+app.include_router(estudiantes.router)

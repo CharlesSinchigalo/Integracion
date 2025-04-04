@@ -12,7 +12,7 @@ var DB *gorm.DB
 func Connect() {
 	// Cambia estos valores según tu configuración de MySQL
 	username := "root"
-	password := "123456"
+	password := "1850350552"
 	host := "127.0.0.1"
 	port := "3306"
 	dbname := "midb"
